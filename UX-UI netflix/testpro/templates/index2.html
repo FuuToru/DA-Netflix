@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Suggest Movies</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Suggest Movies</h1>
+    <input type="text" id="movieInput" placeholder="Nhập tên phim">
+    <input type="hidden" id="selectedMovie" name="selectedMovie">
+    
+    <div class="dropdown">
+        <ul id="suggestions" class="dropdown-content"></ul>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#movieInput').on('input', function() {
+                var query = $(this).val();
+                if (query) {
+                    $.get('/suggest_movie', { q: query }, function(data) {
+                        var suggestions = $('#suggestions');
+                        suggestions.empty();
+                        
+                        data.forEach(function(movie) {
+                            suggestions.append('<li>' + movie + '</li>');
+                        });
+                        
+                        suggestions.find('li').on('click', function() {
+                            var selectedMovie = $(this).text();
+                            $('#movieInput').val(selectedMovie);
+                            $('#selectedMovie').val(selectedMovie);
+                            window.location.href = '/movie_detail?title=' + selectedMovie;
+                        });
+                    });
+                } else {
+                    $('#suggestions').empty();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

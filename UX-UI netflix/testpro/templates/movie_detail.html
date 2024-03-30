@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie details</title>
+    <style>
+        .body{
+            position: relative;
+            width: 100%;
+        }
+        .body1 {
+            width: 50%;
+            height: 1000px;
+            float: left;
+        }
+        .body2 {
+
+            padding-top: 3px;
+            padding-left: 60%;
+            /* float: right; */
+
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div class = "header">
+        <nav>
+            <img src="{{ url_for('static', filename='logo.png') }}" class ="logo">
+            <!-- <div>
+                <button class="language-btn">English<img src = "{{ url_for('static', filename='down-icon.png') }}"></button>
+                <button>Sign In</button>
+            </div>     -->
+        </nav>
+    </div>
+    <div class="body ">
+        <div class="body1" >
+            <h1>Movie details</h1>
+            <b>ID: </b><span>{{ movie[0] }}</span> <br> <br>
+            <b>Type: </b><span>{{ movie[1] }}</span> <br><br>
+            <b>Title: </b><span>{{ movie[2] }}</span> <br><br>
+            <b>Creator: </b><span>{{ movie[3] }}</span> <br><br>
+            <b>Starring: </b><span>{{ movie[4] }}</span> <br><br>
+            <b>Year: </b><span>{{ movie[5] }}</span> <br><br>
+            <b>Rating: </b><span>{{ movie[6] }}</span> <br><br>
+            <b>Duaration: </b><span>{{ movie[7] }}</span> <br><br>
+            <b>Genres: </b><span>{{ movie[8] }}</span> <br><br>
+            <b>Country: </b><span>{{ movie[9] }}</span> <br><br>
+            <b>Description: </b><span>{{ movie[10] }}</span> <br><br>
+        </div>
+        <div class="body2">
+            <h1>Recommendation system</h1>
+            <ul>
+                {% for name in recommend_name %}
+                <li>
+                    <p>{{name}}</p>
+                </li>
+                {% endfor %}
+    
+            </ul>
+    
+        </div>
+
+    </div>
+
+
+</body>
+</html>
