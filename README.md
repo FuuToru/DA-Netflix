@@ -1,6 +1,5 @@
 # Netflix Movies and TV Shows Dashboard using Tableau
 
-Test
 
 ## Overview
 
